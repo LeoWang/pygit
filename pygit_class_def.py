@@ -19,9 +19,10 @@ class pycmdclass(object):
     """ The Base Class of the Python Cmd.
     """
 
-    def __init__(self, pycmd_name=""):
+    def __init__(self, pycmd_name="", pycmd_paras=[]):
         """Initialize the object."""
         self.pycmd_name = pycmd_name
+        self.pycmd_paras = pycmd_paras
 
 
 class optclass(object):

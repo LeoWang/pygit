@@ -3,7 +3,7 @@
 
 #################################################################
 # Copyright (C) 2012 LEO
-# FileName     : pygit_command_excute.py
+# FileName     : pygit_add.py
 # Version      : 1.0
 # Auther       : LeoWang
 # Auther Email : leowang812@gmail.com
@@ -14,24 +14,17 @@
 #                  Description :
 #                                Create file
 #################################################################
-import os
-import sys
 
-str_space = " "
+import pygit_class_def as cmdbaseclass
+import pygit_command_excute as cmdexe
 
-def pygitcmd_exe(pygitcmd_obj,opt_list):
+def pygit_add():
+    pycmdclass_obj = cmdbaseclass.pycmdclass("add",".")
+    opt_obj_list = []
+    cmdexe.pygitcmd_exe(pycmdclass_obj,opt_obj_list)
 
-    git_cmd_str = "git"+str_space+pygitcmd_obj.pycmd_name
-    
-    for opt in opt_list:
-        git_cmd_str += str_space+opt.opt_short_name+str_space+opt.opt_para_value
+def main():
+    pygit_add()
 
-    for para in pygitcmd_obj.pycmd_paras:
-        git_cmd_str += str_space+para
-
-    print "git cmd string : "+git_cmd_str
-
-    #execute cmd
-    os.system(git_cmd_str)
-
-    exit(0)
+if __name__ == '__main__':
+    main()
