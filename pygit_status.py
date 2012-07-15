@@ -18,6 +18,11 @@
 import pygit_class_def as cmdbaseclass
 import pygit_command_excute as cmdexe
 
+def pygit_status():
+    pycmdclass_obj = cmdbaseclass.pycmdclass("status")
+    opt_obj_list = []
+    cmdexe.pygitcmd_exe(pycmdclass_obj,opt_obj_list)
+
 def pygit_status_short():
     pycmdclass_obj = cmdbaseclass.pycmdclass("status")
     print "git cmd name : "+pycmdclass_obj.pycmd_name
@@ -27,7 +32,7 @@ def pygit_status_short():
     cmdexe.pygitcmd_exe(pycmdclass_obj,opt_obj_list)
 
 def main():
-    pygit_status_short()
+    pygit_status()
 
 if __name__ == '__main__':
     main()
