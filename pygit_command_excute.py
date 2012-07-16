@@ -19,11 +19,11 @@ import sys
 
 str_space = " "
 
-def pygitcmd_exe(pygitcmd_obj,opt_list):
+def pygitcmd_exe(pygitcmd_obj):
 
     git_cmd_str = "git"+str_space+pygitcmd_obj.pycmd_name
     
-    for opt in opt_list:
+    for opt in pygitcmd_obj.opt_list:
         git_cmd_str += str_space+opt.opt_short_name+str_space+opt.opt_para_value
 
     for para in pygitcmd_obj.pycmd_paras:

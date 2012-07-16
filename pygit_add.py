@@ -18,10 +18,14 @@
 import pygit_class_def as cmdbaseclass
 import pygit_command_excute as cmdexe
 
+class pycmdclass_add(cmdbaseclass.pycmdclass):
+    def __init__(self,paras):
+        cmdbaseclass.pycmdclass.__init__(self,"add",paras)
+        self.opt_list = []
+
 def pygit_add():
-    pycmdclass_obj = cmdbaseclass.pycmdclass("add",".")
-    opt_obj_list = []
-    cmdexe.pygitcmd_exe(pycmdclass_obj,opt_obj_list)
+    pycmdclass_add_obj = pycmdclass_add(".")
+    cmdexe.pygitcmd_exe(pycmdclass_add_obj)
 
 def main():
     pygit_add()

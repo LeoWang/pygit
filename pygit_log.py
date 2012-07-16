@@ -18,10 +18,14 @@
 import pygit_class_def as cmdbaseclass
 import pygit_command_excute as cmdexe
 
+class pycmdclass_log(cmdbaseclass.pycmdclass):
+    def __init__(self,paras=[]):
+        cmdbaseclass.pycmdclass.__init__(self,"log",paras)
+        self.opt_list = []
+
 def pygit_log():
-    pycmdclass_obj = cmdbaseclass.pycmdclass("log")
-    opt_obj_list = []
-    cmdexe.pygitcmd_exe(pycmdclass_obj,opt_obj_list)
+    pycmdclass_log_obj = pycmdclass_log()
+    cmdexe.pygitcmd_exe(pycmdclass_log_obj)
 
 def main():
     pygit_log()

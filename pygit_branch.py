@@ -18,10 +18,14 @@
 import pygit_class_def as cmdbaseclass
 import pygit_command_excute as cmdexe
 
+class pycmdclass_branch(cmdbaseclass.pycmdclass):
+    def __init__(self,paras=[]):
+        cmdbaseclass.pycmdclass.__init__(self,"branch",paras)
+        self.opt_list = []
+
 def pygit_branch():
-    pycmdclass_obj = cmdbaseclass.pycmdclass("branch")
-    opt_obj_list = []
-    cmdexe.pygitcmd_exe(pycmdclass_obj,opt_obj_list)
+    pycmdclass_branch_obj = pycmdclass_branch()
+    cmdexe.pygitcmd_exe(pycmdclass_branch_obj)
 
 def main():
     pygit_branch()
