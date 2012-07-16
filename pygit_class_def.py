@@ -29,9 +29,8 @@ class optclass(object):
     """ The Base Class of the Python Cmd Option.
     """
 
-    def __init__(self, opt_short_name="", opt_long_name="", opt_para_value="", opt_valid=True):
+    def __init__(self, opt_name="", opt_para_value="", opt_valid=False):
         """Initialize the object."""
-        self.opt_short_name = opt_short_name
-        self.opt_long_name = opt_long_name
+        self.opt_name= opt_name
         self.opt_para_value = opt_para_value
         self.opt_valid = opt_valid

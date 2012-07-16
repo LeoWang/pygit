@@ -18,29 +18,37 @@
 import pygit_class_def as cmdbaseclass
 import pygit_command_excute as cmdexe
 
+def opt_init():
+    opt_dict = {}
+    opt_dict["-s"] = cmdbaseclass.optclass("-s")
+    opt_dict["--short"] = cmdbaseclass.optclass("--short")
+    opt_dict["-b"] = cmdbaseclass.optclass("-b")
+    opt_dict["--branch"] = cmdbaseclass.optclass("--branch")
+    opt_dict["--porcelain"] = cmdbaseclass.optclass("--porcelain")
+    opt_dict["-u"] = cmdbaseclass.optclass("-u")
+    opt_dict["--untracked-files"] = cmdbaseclass.optclass("--untracked-files")
+    opt_dict["--ignore-submodules"] = cmdbaseclass.optclass("--ignore-submodules")
+    opt_dict["--ignored"] = cmdbaseclass.optclass("--ignored")
+    opt_dict["-z"] = cmdbaseclass.optclass("-z")
+    return opt_dict
+
 class pycmdclass_status(cmdbaseclass.pycmdclass):
     def __init__(self):
         cmdbaseclass.pycmdclass.__init__(self,"status")
-        self.opt_list = []
+        self.opt_list = opt_init()
 
 def pygit_status():
     pycmdclass_status_obj = pycmdclass_status()
-    #pycmdclass_obj = cmdbaseclass.pycmdclass("status")
-    #opt_obj_list = []
-    #cmdexe.pygitcmd_exe(pycmdclass_obj,opt_obj_list)
     cmdexe.pygitcmd_exe(pycmdclass_status_obj)
-                       # pycmdclass_status_obj.opt_list)
 
 def pygit_status_short():
-    pycmdclass_obj = cmdbaseclass.pycmdclass("status")
+    pycmdclass_status_obj = pycmdclass_status()
+    pycmdclass_status_obj.opt_list["-s"].opt_valid = True
+    cmdexe.pygitcmd_exe(pycmdclass_status_obj)
     print "git cmd name : "+pycmdclass_obj.pycmd_name
-    opt_obj_list = []
-    opt_obj = cmdbaseclass.optclass("-s","--short")
-    opt_obj_list.append(opt_obj)
-    cmdexe.pygitcmd_exe(pycmdclass_obj,opt_obj_list)
 
 def main():
-    pygit_status()
+    pygit_status_short()
 
 if __name__ == '__main__':
     main()

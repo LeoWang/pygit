@@ -21,7 +21,7 @@ import pygit_command_excute as cmdexe
 class pycmdclass_branch(cmdbaseclass.pycmdclass):
     def __init__(self,paras=[]):
         cmdbaseclass.pycmdclass.__init__(self,"branch",paras)
-        self.opt_list = []
+        self.opt_list = {}
 
 def pygit_branch():
     pycmdclass_branch_obj = pycmdclass_branch()
