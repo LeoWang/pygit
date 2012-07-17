@@ -14,7 +14,7 @@
 #                  Description :
 #                                Create file
 #################################################################
-
+import sys
 import pygit_class_def as cmdbaseclass
 import pygit_command_excute as cmdexe
 
@@ -38,7 +38,14 @@ class pycmdclass_status(cmdbaseclass.pycmdclass):
         self.opt_list = opt_init()
 
 def pygit_status():
+    
     pycmdclass_status_obj = pycmdclass_status()
+    
+    if 1 < len(sys.argv):
+        for argv in sys.argv:
+            if True == pycmdclass_status_obj.opt_list.has_key(argv):
+                pycmdclass_status_obj.opt_list[argv].opt_valid = True
+
     cmdexe.pygitcmd_exe(pycmdclass_status_obj)
 
 def pygit_status_short():
@@ -48,7 +55,7 @@ def pygit_status_short():
     print "git cmd name : "+pycmdclass_obj.pycmd_name
 
 def main():
-    pygit_status_short()
+    pygit_status()
 
 if __name__ == '__main__':
     main()

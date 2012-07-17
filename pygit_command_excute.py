@@ -25,7 +25,9 @@ def pygitcmd_exe(pygitcmd_obj):
     
     for opt in pygitcmd_obj.opt_list.values():
         if opt.opt_valid == True:
-            git_cmd_str += str_space+opt.opt_name+str_space+opt.opt_para_value
+            git_cmd_str += str_space+opt.opt_name
+            if 0 != len(opt.opt_para_value):
+                git_cmd_str += str_space+opt.opt_para_value
 
     for para in pygitcmd_obj.pycmd_paras:
         git_cmd_str += str_space+para
